@@ -1,0 +1,86 @@
+{
+  "namaste": [
+    {
+      "code": "NAM-001",
+      "display": "Fever"
+    },
+    {
+      "code": "NAM-002",
+      "display": "Headache"
+    },
+    {
+      "code": "NAM-003",
+      "display": "Cough"
+    },
+    {
+      "code": "NAM-004",
+      "display": "Tuberculosis"
+    },
+    {
+      "code": "NAM-005",
+      "display": "Hypertension"
+    },
+    {
+      "code": "NAM-006",
+      "display": "Diabetes mellitus"
+    },
+    {
+      "code": "NAM-007",
+      "display": "Chronic obstructive pulmonary disease"
+    },
+    {
+      "code": "NAM-008",
+      "display": "Asthma"
+    },
+    {
+      "code": "NAM-009",
+      "display": "Ischaemic heart disease"
+    },
+    {
+      "code": "NAM-010",
+      "display": "Stroke"
+    }
+  ],
+  "icd11": [
+    {
+      "code": "1A04",
+      "display": "Typhoid fever"
+    },
+    {
+      "code": "1E40",
+      "display": "Dengue"
+    },
+    {
+      "code": "1F40",
+      "display": "Malaria"
+    },
+    {
+      "code": "CA40",
+      "display": "Pneumonia, unspecified"
+    },
+    {
+      "code": "CA22",
+      "display": "Acute upper respiratory infection"
+    },
+    {
+      "code": "CA23",
+      "display": "Asthma"
+    },
+    {
+      "code": "CA25",
+      "display": "Chronic obstructive pulmonary disease"
+    },
+    {
+      "code": "5A11",
+      "display": "Hypertension"
+    },
+    {
+      "code": "5A13",
+      "display": "Diabetes mellitus, type 2"
+    },
+    {
+      "code": "BA40",
+      "display": "Ischaemic heart disease"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "username": "clinician1",
+    "role": "clinician",
+    "id": "C1",
+    "password_hash": "$2b$12$qW05a6Bw41Hsk5GefvV4HeUIlVu6XcuC4RCgFDQt5CReMSEOwEbMq"
+  },
+  {
+    "username": "ravi",
+    "role": "patient",
+    "id": "101",
+    "password_hash": "$2b$12$.N6rJzYHLH5aAPxII3kCfujcCz27XxVdT6OP6znD9AX0l/wAxtAG."
+  }
+]

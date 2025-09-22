@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Clinician Portal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f9;
+      color: #0d3b66;
+      margin: 0;
+      padding: 20px;
+      display: block; /* changed from flex to block */
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .card {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      width: 100%;
+      max-width: 650px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px 0;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #1d77ef;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #145ec8;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    #status, #diagStatus, #patientStatus {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #0d3b66;
+    }
+
+    #err {
+      color: red;
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    .topbar button {
+      background-color: #1d77ef;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .topbar button:hover {
+      background-color: #145ec8;
+    }
+
+    #records .record {
+      border: 1px solid #eee;
+      background-color: #f9faff;
+      padding: 12px;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
+
+    #diseaseSuggestions {
+      position: absolute;
+      z-index: 9999;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      max-width: 480px;
+      display: none;
+    }
+
+    .sugg-group {
+      font-weight: 600;
+      padding: 6px 8px;
+      border-bottom: 1px solid #eee;
+      background: #fafafa;
+    }
+
+    .sugg-item {
+      padding: 6px 8px;
+      cursor: pointer;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .sugg-item:hover, .sugg-item.active {
+      background: #eef;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1d77ef;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+      .card {
+        width: 90%;
+        padding: 15px;
+      }
+      .row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Clinician Portal</h1>
+
+  <!-- LOGIN -->
+  <div id="loginBox" class="card">
+    <h3>Login</h3>
+    <form id="loginForm">
+      <label>Username <input id="username" required></label>
+      <label>Password <input id="password" type="password" required></label>
+      <div style="margin-top:10px;">
+        <button type="submit">Login</button>
+        <div id="err" role="alert"></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" style="display:none">
+    <div class="topbar">
+      <div><strong id="who">Clinician</strong></div>
+      <div><button id="logoutBtn" type="button">Logout</button></div>
+    </div>
+
+    <!-- CREATE PATIENT -->
+    <div class="card">
+      <h3>Create Patient</h3>
+      <form id="patientForm">
+        <label>Name <input id="p_name" required /></label>
+        <label>DOB <input id="p_dob" placeholder="YYYY-MM-DD" /></label>
+        <label>Gender <input id="p_gender" /></label>
+        <label>Contact <input id="p_contact" /></label>
+        <button type="submit">Save patient</button>
+      </form>
+      <div id="patientStatus"></div>
+    </div>
+
+    <!-- CREATE DIAGNOSIS -->
+    <div class="card">
+      <h3>Create Diagnosis</h3>
+      <form id="diagForm">
+        <label>Patient ID <input id="d_patient_id" placeholder="paste patient id or choose from records" required /></label>
+
+        <label>Disease (type to auto-fill codes)
+          <input id="disease" autocomplete="off" />
+        </label>
+        <div id="diseaseSuggestions" aria-expanded="false" role="listbox"></div>
+
+        <label>NAMASTE code
+          <input id="d_namaste" list="namasteList" />
+          <datalist id="namasteList"></datalist>
+        </label>
+
+        <label>ICD-11 code
+          <input id="d_icd11" list="icd11List"></datalist>
+        </label>
+
+        <label>Note<textarea id="d_note" rows="2"></textarea></label>
+
+        <div class="row">
+          <button type="submit">Save diagnosis</button>
+          <button type="button" id="fillFromSelected">Use selected record</button>
+        </div>
+      </form>
+      <div id="diagStatus"></div>
+    </div>
+
+    <!-- ALL RECORDS -->
+    <div class="card">
+      <h3>All Records</h3>
+      <button id="refreshBtn">Refresh</button>
+      <div id="records"></div>
+    </div>
+
+    <div id="status"></div>
+
+    <!-- Back to main page link -->
+    <p style="margin-top:20px;"><a href="/static/index.html">Back to main page</a></p>
+  </div>
+
+  <script src="/static/js/clinician.js"></script>
+  <script src="/static/js/disease-autocomplete.js"></script>
+</body>
+</html>

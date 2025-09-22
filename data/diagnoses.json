@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1001,
+    "patient_id": 101,
+    "namaste_code": "NAM-001",
+    "icd11_code": "CA22",
+    "note": "Initial consult: fever and cough"
+  },
+  {
+    "patient_id": "102",
+    "namaste_code": "NAM-001",
+    "icd11_code": "1A04",
+    "note": "he is cursed",
+    "id": 1002
+  },
+  {
+    "patient_id": "103",
+    "namaste_code": "NAM-009",
+    "icd11_code": "BA40",
+    "note": "she is cursed",
+    "id": 1003
+  }
+]

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Patient Portal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f9;
+      color: #0d3b66;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .card {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 650px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px 0;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #1d77ef;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #145ec8;
+    }
+
+    #err {
+      color: red;
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    .topbar button {
+      background-color: #1d77ef;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .topbar button:hover {
+      background-color: #145ec8;
+    }
+
+    #records .record {
+      border: 1px solid #eee;
+      background-color: #f9faff;
+      padding: 12px;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
+
+    #status {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #0d3b66;
+    }
+
+    /* Links */
+    a {
+      text-decoration: none;
+      color: #1d77ef;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+      .card {
+        width: 90%;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Patient Portal</h1>
+
+  <!-- LOGIN -->
+  <div id="loginBox" class="card">
+    <h3>Login</h3>
+    <form id="patientLoginForm">
+      <label>Username
+        <input id="p_username" required />
+      </label>
+      <label>Password
+        <input id="p_password" type="password" required />
+      </label>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button type="submit" id="loginBtn">Login</button>
+        <div id="err" role="alert"></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="card" style="display:none">
+    <div class="topbar">
+      <div>
+        <strong id="who">Patient</strong>
+        <div class="muted" id="whoId"></div>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button id="refreshBtn">Refresh records</button>
+        <button id="logoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+
+    <h4>Your Records</h4>
+    <div id="records" aria-live="polite"></div>
+
+    <div id="status" class="muted"></div>
+  </div>
+
+  <p style="margin-top:20px;"><a href="/static/index.html">Back to main page</a></p>
+
+  <script src="/static/js/patient.js"></script>
+</body>
+</html>
+

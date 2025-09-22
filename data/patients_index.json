@@ -1,0 +1,58 @@
+[
+  {
+    "id": "d42c1ad4-3b5c-4c9a-9316-23c93bab7eb4",
+    "name": "asik kani",
+    "dob": "1990-05-15",
+    "gender": "male",
+    "contact": "9876543210"
+  },
+  {
+    "id": "bd66a91a-173d-4d58-829e-bad85063582d",
+    "name": "Ravi Kumar",
+    "dob": "1990-05-15",
+    "gender": "male",
+    "contact": "9876543210"
+  },
+  {
+    "id": "cdcd23fb-3cb6-4ead-9159-8ced1237b61a",
+    "name": "Ravi Kumar",
+    "dob": "1990-05-15",
+    "gender": "male",
+    "contact": "9876543210"
+  },
+  {
+    "id": "a93639fc-3fb8-4c09-9f74-c64c1cf7a5a8",
+    "name": "Ravi Kumar",
+    "dob": "1990-05-15",
+    "gender": "male",
+    "contact": "9876543210"
+  },
+  {
+    "id": "f2108c79-1be8-4893-a215-3771d18702a4",
+    "name": "Ravi Kumar",
+    "dob": "1990-05-15",
+    "gender": "male",
+    "contact": "9876543210"
+  },
+  {
+    "id": "8c9080a8-a07a-40d4-92c2-f32af71f15a0",
+    "name": "Ravi Kumar",
+    "dob": "1990-05-15",
+    "gender": "male",
+    "contact": "9876543210"
+  },
+  {
+    "id": "63b85fef-de7f-4496-93ae-f8fbad69a757",
+    "name": "Ravi Kumar",
+    "dob": "1990-05-15",
+    "gender": "male",
+    "contact": "9876543210"
+  },
+  {
+    "id": "a0088f77-c3c5-4489-9e5a-817e8e8d7f0e",
+    "name": "Ravi Kumar",
+    "dob": "1990-05-15",
+    "gender": "male",
+    "contact": "9876543210"
+  }
+]
